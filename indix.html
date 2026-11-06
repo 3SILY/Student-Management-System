@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudentHub - Management</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f5f6fc;
+        color: #1e293b;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: min(1200px, 92%);
+        margin: 40px auto;
+      }
+
+      .student-mangement {
+        background: linear-gradient(135deg, #312e81, #6d4aff);
+        padding: 28px 35px;
+        border-radius: 18px;
+        color: white;
+        margin-bottom: 30px;
+        box-shadow: 0 12px 30px rgba(99, 74, 255, 0.18);
+      }
+
+      .student-mangement h1 {
+        font-size: 28px;
+        font-weight: 800;
+      }
+
+      form {
+        background: white;
+        padding: 28px;
+        border-radius: 18px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        box-shadow: 0 5px 25px rgba(15, 23, 42, 0.05);
+        margin-bottom: 25px;
+      }
+
+      input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        outline: none;
+        font-size: 14px;
+        font-family: inherit;
+        transition: 0.2s;
+      }
+
+      input:focus {
+        border-color: #7055f5;
+        box-shadow: 0 0 0 3px rgba(112, 85, 245, 0.12);
+      }
+
+      #search {
+        grid-column: 1 / -1;
+        background: #f8f9ff;
+      }
+
+      #add-student {
+        grid-column: 1 / -1;
+        border: none;
+        background: #6d4aff;
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      #add-student:hover {
+        background: #5635e8;
+        transform: translateY(-2px);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 5px 25px rgba(15, 23, 42, 0.05);
+      }
+
+      thead {
+        background: #312e81;
+        color: white;
+      }
+
+      th,
+      td {
+        padding: 18px 15px;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
+      th {
+        font-weight: 600;
+      }
+
+      tbody tr {
+        border-bottom: 1px solid #edf0f5;
+        transition: 0.2s;
+      }
+
+      tbody tr:hover {
+        background: #f8f7ff;
+      }
+
+      tbody tr:last-child {
+        border-bottom: none;
+      }
+
+      #delete-student,
+      #edit-student {
+        border: none;
+        padding: 9px 13px;
+        border-radius: 7px;
+        font-weight: 600;
+        cursor: pointer;
+        margin: 2px;
+        transition: 0.2s;
+      }
+
+      #delete-student {
+        background: #fee2e2;
+        color: #dc2626;
+      }
+
+      #delete-student:hover {
+        background: #fecaca;
+      }
+
+      #edit-student {
+        background: #e0e7ff;
+        color: #4338ca;
+      }
+
+      #edit-student:hover {
+        background: #c7d2fe;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          width: 95%;
+          margin: 20px auto;
+        }
+
+        .student-mangement {
+          padding: 22px;
+        }
+
+        .student-mangement h1 {
+          font-size: 22px;
+        }
+
+        form {
+          padding: 18px;
+          grid-template-columns: 1fr;
+        }
+
+        #search,
+        #add-student {
+          grid-column: auto;
+        }
+
+        .table-wrapper {
+          overflow-x: auto;
+          border-radius: 16px;
+        }
+
+        table {
+          min-width: 850px;
+        }
+      }
+
+      /* DARK MODE */
+
+      body.dark-mode {
+        background: #0b1120;
+        color: #e2e8f0;
+      }
+
+      body.dark-mode form {
+        background: #151e30;
+      }
+
+      body.dark-mode table {
+        background: #151e30;
+      }
+
+      body.dark-mode input {
+        background: #0f172a;
+        color: white;
+      }
+      #theme-toggle {
+        background: #7c3aed;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="student-mangement">
+        <h1>Student Management</h1>
+        <button id="theme-toggle">☀️ Light Mode</button>
+      </nav>
+
+      <form id="stduent-form" action="">
+        <input id="name" type="text" placeholder="Name" />
+        <input id="age" type="number" placeholder="Age" />
+        <input id="email" type="email" placeholder="Email" />
+        <input id="course" type="text" placeholder="Course" />
+        <input id="grade" type="number" placeholder="Grade" />
+        <input id="search" type="text" placeholder="Search by Name or Email" />
+
+        <button type="submit" id="add-student">Add Student</button>
+      </form>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Email</th>
+              <th>Course</th>
+              <th>Grade</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="students"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
