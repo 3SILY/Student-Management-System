@@ -183,5 +183,4 @@ themeToggle.addEventListener("click", function () {
     themeToggle.innerHTML = "🌙 Dark Mode";
   }
 });
-console.log("Hellow Git")
-console.log("Hellow Git")
+console.log("New Line")
