@@ -183,4 +183,4 @@ themeToggle.addEventListener("click", function () {
     themeToggle.innerHTML = "🌙 Dark Mode";
   }
 });
-console.log("New Line")
+console.log("New Line") 
